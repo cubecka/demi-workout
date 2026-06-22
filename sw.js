@@ -44,10 +44,11 @@ self.addEventListener('message', e => {
     if (hour >= startHour && hour < endHour) {
       const messages = [
         "💧 Hey Demi, time to drink some water!",
+        "💧 You're probably not drinking enough water, am i wrong?",
         "💧 Hydration check! Grab a glass of water",
+        "💧 Av ju, now drink water.",
         "💧 Don't forget to drink water today",
         "💧 Water time! Your body will thank you",
-        "💧 Stay hydrated, keep crushing it 💪",
       ];
       const msg = messages[Math.floor(Math.random() * messages.length)];
 
