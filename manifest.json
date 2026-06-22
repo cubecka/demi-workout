@@ -1,6 +1,6 @@
 {
-  "name": "Demi's Workout Plan",
-  "short_name": "Demi's Plan",
+  "name": "Demi's Workout",
+  "short_name": "Demi's Workout",
   "description": "Personal workout plan and tracker",
   "start_url": "/",
   "display": "standalone",
