@@ -291,9 +291,10 @@ function NotificationBanner(){
       save('water_start_hour',startHour);
       save('water_end_hour',endHour);
       save('water_interval',interval);
-      scheduleWaterReminders();
-      // send a test notification
-      new Notification("💧 Demi's Workout App",{body:"Water reminders are on! You'll get a nudge every "+interval+" hours.",icon:"/logo-192.png"});
+      // Tell SW to send confirmation + schedule reminders
+      navigator.serviceWorker.ready.then(reg=>{
+        reg.active.postMessage({type:'WATER_ENABLED',startHour,endHour,intervalHours:interval});
+      });
     }
   };
 
