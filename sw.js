@@ -43,19 +43,20 @@ self.addEventListener('message', e => {
 
     if (hour >= startHour && hour < endHour) {
       const messages = [
-        "💧 Hey Demi, time to drink some water!",
-        "💧 You're probably not drinking enough water, am i wrong?",
-        "💧 Hydration check! Grab a glass of water",
-        "💧 Av ju, now drink water.",
-        "💧 Don't forget to drink water today",
-        "💧 Water time! Your body will thank you",
+        "drink your water babe 💧 — Jozef",
+        "av ju, now drink water 💧",
+        "Demik, water. now. please 💧",
+        "jozef here, drink water 💧",
+        "you're probably not drinking enough water, am i wrong? 💧",
+        "i'm not there to remind you in person so — water 💧",
+        "demik 💧 water 💧 now 💧 ily",
       ];
       const msg = messages[Math.floor(Math.random() * messages.length)];
 
       self.registration.showNotification("Demi's Workout App 💧", {
         body: msg,
-        icon: '/icon-192.png',
-        badge: '/icon-192.png',
+        icon: '/logo-192.png',
+        badge: '/logo-192.png',
         tag: 'water-reminder',
         renotify: true,
       });
