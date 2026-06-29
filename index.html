@@ -163,12 +163,105 @@ const typeColors={warmup:{bg:"#FFF9E6",border:"#F0C040"},main:{bg:"#F0F4FF",bord
 const dayColors={A:"#9B59B6",B:"#E67E22",C:"#27AE60",D:"#E74C3C"};
 const effortLabels=["","Easy 😌","Moderate 🙂","Hard 😤","Very Hard 💀","Max effort 🔥"];
 
+const homePlan = [
+  {
+    id:"A",label:"Day A",focus:"Upper Body – Push & Core",emoji:"💪",
+    color:"#E8D5F5",accent:"#9B59B6",
+    warmup:"5 min brisk walk or marching in place + arm circles, shoulder rolls, cat-cow stretch",
+    cooldown:"5 min stretching: chest opener, tricep stretch, neck rolls, deep breathing",
+    blocks:[
+      {name:"Warm-Up Circuit",type:"warmup",exercises:[
+        {name:"Resistance Band Pull-Apart",sets:2,reps:"15",restSec:60,note:"Activates rear delts & upper back"},
+        {name:"Shoulder CARs",sets:2,reps:"5 each",restSec:60,note:"Mobility warm-up"},
+      ]},
+      {name:"Main Block",type:"main",exercises:[
+        {name:"Standing Dumbbell Shoulder Press",sets:3,reps:"10–12",restSec:60,note:"Keep core tight. Add resistance band if DBs become too easy"},
+        {name:"Floor Dumbbell Chest Press",sets:3,reps:"10–12",restSec:60,note:"Palms facing each other, elbows about 40°"},
+        {name:"Dumbbell Lateral Raise",sets:3,reps:"12–15",restSec:60,note:"Raise to shoulder height with control"},
+        {name:"Band Tricep Pushdown",sets:3,reps:"12–15",restSec:60,note:"Keep elbows tucked"},
+        {name:"Overhead Band Tricep Extension",sets:3,reps:"12",restSec:60,note:"Stretch fully and squeeze at the top"},
+      ]},
+      {name:"Core",type:"core",exercises:[
+        {name:"Dead Bug",sets:3,reps:"8 each side",restSec:60,note:"Slow and controlled"},
+        {name:"Standing Pallof Press (Band)",sets:3,reps:"10 each side",restSec:60,note:"Keep torso still"},
+        {name:"Plank Hold",sets:3,reps:"30–40s",restSec:60,note:"Maintain a straight line from head to heels"},
+      ]}
+    ]
+  },
+  {
+    id:"B",label:"Day B",focus:"Glutes & Hamstrings",emoji:"🍑",
+    color:"#FDEBD0",accent:"#E67E22",
+    warmup:"5 min brisk walk + hip circles, glute bridges ×10, leg swings",
+    cooldown:"5 min: pigeon stretch, hip flexor stretch, seated hamstring stretch, deep breathing",
+    blocks:[
+      {name:"Activation",type:"warmup",exercises:[
+        {name:"Glute Bridge",sets:2,reps:"15",restSec:60,note:"Focus on squeezing glutes"},
+        {name:"Mini Band Clamshells",sets:2,reps:"15 each side",restSec:60,note:"Activates glutes and supports knee stability"},
+      ]},
+      {name:"Main Block",type:"main",exercises:[
+        {name:"Single-Leg Hip Thrust (DB)",sets:4,reps:"10–12 each leg",restSec:60,note:"DB on hips. Add mini band around knees if desired"},
+        {name:"Romanian Deadlift (DBs)",sets:3,reps:"10–12",restSec:60,note:"Hinge at the hips with a neutral back"},
+        {name:"Standing Band Kickback",sets:3,reps:"12–15 each leg",restSec:60,note:"Squeeze glute at the top"},
+        {name:"Sliding Leg Curl",sets:3,reps:"12–15",restSec:60,note:"Keep hips lifted throughout"},
+        {name:"Banded Lateral Walks",sets:3,reps:"15",restSec:60,note:"Stay in a slight squat and keep tension on the band"},
+      ]},
+      {name:"Accessory",type:"core",exercises:[
+        {name:"Standing Calf Raises (DBs)",sets:3,reps:"15–20",restSec:60,note:"Pause at the top"},
+        {name:"Side-Lying Hip Abduction",sets:3,reps:"15 each side",restSec:60,note:"Keep toes slightly pointed down"},
+      ]}
+    ]
+  },
+  {
+    id:"C",label:"Day C",focus:"Upper Body – Pull & Shoulders",emoji:"🏋️‍♀️",
+    color:"#D5F5E3",accent:"#27AE60",
+    warmup:"5 min brisk walk + band pull-aparts, cat-cow, thoracic rotations",
+    cooldown:"5 min: child's pose, lat stretch, bicep wall stretch, neck and shoulder release",
+    blocks:[
+      {name:"Activation",type:"warmup",exercises:[
+        {name:"Band Face Pull",sets:2,reps:"15",restSec:60,note:"Squeeze shoulder blades together"},
+        {name:"Cat-Cow + Thread the Needle",sets:2,reps:"8 each side",restSec:60,note:"Thoracic mobility"},
+      ]},
+      {name:"Main Block",type:"main",exercises:[
+        {name:"Band Lat Pulldown",sets:3,reps:"10–12",restSec:60,note:"Drive elbows down toward your sides"},
+        {name:"Seated Band Row",sets:3,reps:"10–12",restSec:60,note:"Keep chest up and squeeze your back"},
+        {name:"Single-Arm Dumbbell Row",sets:3,reps:"12 each side",restSec:60,note:"Avoid twisting your torso"},
+        {name:"Bent-Over Rear Delt Fly",sets:3,reps:"15",restSec:60,note:"Light weight with controlled movement"},
+        {name:"Dumbbell Bicep Curl",sets:3,reps:"12–15",restSec:60,note:"Lower the weight slowly"},
+      ]},
+      {name:"Core + Posture",type:"core",exercises:[
+        {name:"Bird Dog",sets:3,reps:"10 each side",restSec:60,note:"Keep hips level"},
+        {name:"Hollow Body Hold",sets:3,reps:"20–30s",restSec:60,note:"Press lower back into the floor"},
+        {name:"Russian Twist (Light DB)",sets:3,reps:"16 total",restSec:60,note:"Keep feet on the floor if needed"},
+      ]}
+    ]
+  },
+  {
+    id:"D",label:"Day D",focus:"Full Body – Strength + Cardio",emoji:"🔥",
+    color:"#FADBD8",accent:"#E74C3C",
+    warmup:"5 min brisk walk or marching + dynamic leg swings, arm circles, hip hinges",
+    cooldown:"5 min: full body stretch — focus on hips, glutes, chest, shoulders",
+    blocks:[
+      {name:"Main Block",type:"main",exercises:[
+        {name:"Goblet Squat (DB)",sets:3,reps:"12",restSec:60,note:"⚠️ Only squat as deep as comfortable for your knee"},
+        {name:"Single-Arm Dumbbell Row",sets:3,reps:"12 each side",restSec:60,note:"Full range of motion"},
+        {name:"Standing Dumbbell Shoulder Press",sets:3,reps:"10",restSec:60,note:"Keep core tight"},
+        {name:"Single-Leg Hip Thrust (DB)",sets:3,reps:"12 each leg",restSec:60,note:"Pause and squeeze at the top"},
+        {name:"Plank Shoulder Taps",sets:3,reps:"10 each side",restSec:60,note:"Keep hips as still as possible"},
+        {name:"Standing Band Kickback",sets:3,reps:"15 each leg",restSec:60,note:"Slow and controlled"},
+      ]},
+      {name:"Cardio Finisher",type:"warmup",exercises:[
+        {name:"Brisk Walk / Stairs / Step-Ups / Marching",sets:1,reps:"15 min",restSec:0,note:"Keep a steady pace"},
+      ]}
+    ]
+  }
+];
+
 // ─── HELPERS ────────────────────────────────────────────────────────────────
 function todayKey(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;}
 function load(key,fallback){try{const v=localStorage.getItem(key);return v!==null?JSON.parse(v):fallback;}catch{return fallback;}}
 function save(key,value){try{localStorage.setItem(key,JSON.stringify(value));}catch{}}
-function makeExKey(dk,did,bi,ei){return `${dk}_${did}_${bi}_${ei}`;}
-function makeSnapKey(dk,did){return `snap_${dk}_${did}`;}
+function makeExKey(dk,did,bi,ei,mode){return `${dk}_${mode||"gym"}_${did}_${bi}_${ei}`;}
+function makeSnapKey(dk,did,mode){return `snap_${dk}_${mode||"gym"}_${did}`;}
 function findLastSession(dayId,completedDays){const today=todayKey();return Object.entries(completedDays).filter(([d,id])=>id===dayId&&d<today).map(([d])=>d).sort().reverse()[0]||null;}
 function calcStreak(completedDays){const keys=Object.keys(completedDays).filter(k=>completedDays[k]).sort().reverse();if(!keys.length)return 0;let s=1;for(let i=0;i<keys.length-1;i++){const diff=Math.round((new Date(keys[i])-new Date(keys[i+1]))/86400000);if(diff<=4)s++;else break;}return s;}
 function getMonthRange(){const n=new Date(),y=n.getFullYear(),m=n.getMonth();return{start:`${y}-${String(m+1).padStart(2,"0")}-01`,end:`${y}-${String(m+1).padStart(2,"0")}-${String(new Date(y,m+1,0).getDate()).padStart(2,"0")}`};}
@@ -499,18 +592,20 @@ function App(){
   const [scheduleMode,setScheduleMode]=useState("4day");
   const [expanded,setExpanded]=useState({});
   const [tab,setTab]=useState("workout");
+  const [workoutMode,setWorkoutMode]=useState(()=>load("workout_mode","gym"));
   const [completedDays,setCompletedDays]=useState(()=>load("completed_days",{}));
   const [runs,setRuns]=useState(()=>load("runs",[]));
   const [showConfetti,setShowConfetti]=useState(false);
   const [,forceUpdate]=useState(0);
 
-  const day=plan.days[activeDay];
+  const days = workoutMode==="home" ? homePlan : plan.days;
+  const day=days[activeDay];
   const dateKey=todayKey();
   const schedule=scheduleMode==="4day"?plan.weeklyTemplate:plan.altWeekly;
   const streak=calcStreak(completedDays);
 
   const totalSets=day.blocks.reduce((s,b)=>s+b.exercises.reduce((ss,e)=>ss+e.sets,0),0);
-  const doneSets=day.blocks.reduce((s,b,bi)=>s+b.exercises.reduce((ss,ex,ei)=>ss+Math.min(load(`sets_${makeExKey(dateKey,day.id,bi,ei)}`,0),ex.sets),0),0);
+  const doneSets=day.blocks.reduce((s,b,bi)=>s+b.exercises.reduce((ss,ex,ei)=>ss+Math.min(load(`sets_${makeExKey(dateKey,day.id,bi,ei,workoutMode)}`,0),ex.sets),0),0);
   const allDone=totalSets>0&&doneSets>=totalSets;
   const pct=totalSets?(doneSets/totalSets)*100:0;
 
@@ -519,8 +614,8 @@ function App(){
     const key=`${dateKey}_${day.id}`;
     if(allDone&&!markedRef.current[key]){
       markedRef.current[key]=true;setShowConfetti(true);setTimeout(()=>setShowConfetti(false),4200);
-      const snap={};day.blocks.forEach((b,bi)=>b.exercises.forEach((ex,ei)=>{const w=load(`weight_${makeExKey(dateKey,day.id,bi,ei)}`,"");if(w)snap[`${bi}_${ei}`]=w;}));
-      save(makeSnapKey(dateKey,day.id),snap);
+      const snap={};day.blocks.forEach((b,bi)=>b.exercises.forEach((ex,ei)=>{const w=load(`weight_${makeExKey(dateKey,day.id,bi,ei,workoutMode)}`,"");if(w)snap[`${bi}_${ei}`]=w;}));
+      save(makeSnapKey(dateKey,day.id,workoutMode),snap);
       const updated={...completedDays,[dateKey]:day.id};setCompletedDays(updated);save("completed_days",updated);
     }
   },[allDone]);
@@ -582,9 +677,18 @@ function App(){
               </div>
             </div>
 
+            {/* Gym / Home toggle */}
+            <div style={{display:"flex",background:"#F0F0F0",borderRadius:12,padding:3,marginBottom:16,gap:3}}>
+              {[{id:"gym",label:"🏋️ Gym"},{id:"home",label:"🏠 Home"}].map(m=>(
+                <button key={m.id} onClick={()=>{setWorkoutMode(m.id);save("workout_mode",m.id);setActiveDay(0);}} style={{flex:1,padding:"8px",borderRadius:10,border:"none",cursor:"pointer",fontWeight:700,fontSize:13,background:workoutMode===m.id?"white":"transparent",color:workoutMode===m.id?"#1A1A2E":"#888",boxShadow:workoutMode===m.id?"0 1px 6px rgba(0,0,0,0.1)":"none",transition:"all 0.2s"}}>
+                  {m.label}
+                </button>
+              ))}
+            </div>
+
             <div style={{display:"grid",gridTemplateColumns:"repeat(7,1fr)",gap:6,marginBottom:20}}>
-              {schedule.map((s,i)=>{const d=plan.days.find(d=>d.id===s.session);const isActive=d&&plan.days.indexOf(d)===activeDay;return(
-                <div key={i} onClick={()=>d&&setActiveDay(plan.days.indexOf(d))} style={{background:s.session==="REST"?"#EDEDF5":d?.color,borderRadius:12,padding:"10px 4px",textAlign:"center",cursor:d?"pointer":"default",border:isActive?`2px solid ${d.accent}`:"2px solid transparent"}}>
+              {schedule.map((s,i)=>{const d=days.find(d=>d.id===s.session);const isActive=d&&days.indexOf(d)===activeDay;return(
+                <div key={i} onClick={()=>d&&setActiveDay(days.indexOf(d))} style={{background:s.session==="REST"?"#EDEDF5":d?.color,borderRadius:12,padding:"10px 4px",textAlign:"center",cursor:d?"pointer":"default",border:isActive?`2px solid ${d.accent}`:"2px solid transparent"}}>
                   <div style={{fontSize:10,fontWeight:700,color:"#888",marginBottom:2}}>{s.day}</div>
                   <div style={{fontSize:16}}>{s.emoji}</div>
                   <div style={{fontSize:9,fontWeight:700,color:s.session==="REST"?"#AAA":"#333",marginTop:2}}>{s.session==="REST"?"Rest":`Day ${s.session}`}</div>
@@ -593,13 +697,13 @@ function App(){
             </div>
 
             <div style={{display:"flex",gap:8,marginBottom:16,overflowX:"auto",paddingBottom:4}}>
-              {plan.days.map((d,i)=><button key={i} onClick={()=>setActiveDay(i)} style={{flexShrink:0,padding:"8px 16px",borderRadius:20,border:"none",cursor:"pointer",fontWeight:700,fontSize:13,background:i===activeDay?d.accent:d.color,color:i===activeDay?"white":"#333"}}>{d.emoji} {d.label}</button>)}
+              {days.map((d,i)=><button key={i} onClick={()=>setActiveDay(i)} style={{flexShrink:0,padding:"8px 16px",borderRadius:20,border:"none",cursor:"pointer",fontWeight:700,fontSize:13,background:i===activeDay?d.accent:d.color,color:i===activeDay?"white":"#333"}}>{d.emoji} {d.label}</button>)}
             </div>
 
             <div style={{background:"white",borderRadius:20,overflow:"hidden",boxShadow:"0 2px 20px rgba(0,0,0,0.08)",marginBottom:24}}>
               <div style={{background:day.accent,padding:"20px 20px 16px",color:"white"}}>
                 <div style={{fontSize:28,marginBottom:4}}>{day.emoji}</div>
-                <h2 style={{margin:"0 0 12px",fontSize:18,fontWeight:800}}>{day.label}: {day.focus}</h2>
+                <h2 style={{margin:"0 0 12px",fontSize:18,fontWeight:800}}>{day.label}{workoutMode==="home"?" HOME":""}: {day.focus}</h2>
                 <div style={{display:"flex",alignItems:"center",gap:10}}>
                   <div style={{flex:1,background:"rgba(255,255,255,0.25)",borderRadius:99,height:6}}><div style={{height:6,borderRadius:99,background:"white",width:`${pct}%`,transition:"width 0.3s"}}/></div>
                   <span style={{fontSize:12,fontWeight:700,opacity:0.9,flexShrink:0}}>{doneSets}/{totalSets} sets</span>
@@ -621,13 +725,13 @@ function App(){
                     {isOpen&&(
                       <div style={{background:s.bg,border:`1.5px solid ${s.border}`,borderTop:"none",borderRadius:"0 0 14px 14px",overflow:"hidden"}}>
                         {block.exercises.map((ex,ei)=>{
-                          const exKey=makeExKey(dateKey,day.id,bi,ei);
+                          const exKey=makeExKey(dateKey,day.id,bi,ei,workoutMode);
                           const lastDate=findLastSession(day.id,completedDays);
-                          const lastSnap=lastDate?load(makeSnapKey(lastDate,day.id),null):null;
+                          const lastSnap=lastDate?load(makeSnapKey(lastDate,day.id,workoutMode),null):null;
                           const lastWeight=lastSnap?lastSnap[`${bi}_${ei}`]:null;
                           return(
                             <div key={`${day.id}-${bi}-${ei}`} style={{borderTop:ei>0?`1px solid ${s.border}40`:"none"}}>
-                              <ExerciseRow key={`${day.id}-${dateKey}-${bi}-${ei}`} ex={ex} exKey={exKey} lastWeight={lastWeight}/>
+                              <ExerciseRow key={`${workoutMode}-${day.id}-${dateKey}-${bi}-${ei}`} ex={ex} exKey={exKey} lastWeight={lastWeight}/>
                             </div>
                           );
                         })}
