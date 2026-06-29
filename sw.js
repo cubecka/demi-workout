@@ -1,7 +1,7 @@
-const CACHE = "demi-workout-v2";
+const CACHE_NAME = "demi-workout-v2";
 
 self.addEventListener("install", (event) => {
-  self.skipWaiting();
+  self.skipWaiting(); // force new SW immediately
 });
 
 self.addEventListener("activate", (event) => {
@@ -9,7 +9,7 @@ self.addEventListener("activate", (event) => {
     caches.keys().then((keys) =>
       Promise.all(
         keys.map((key) => {
-          if (key !== CACHE) {
+          if (key !== CACHE_NAME) {
             return caches.delete(key);
           }
         })
@@ -18,16 +18,20 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Network-first strategy (IMPORTANT FIX)
+// NETWORK-FIRST (fix for iOS stale cache issues)
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        // optionally update cache
+        if (!response || response.status !== 200) {
+          return response;
+        }
+
         const clone = response.clone();
-        caches.open(CACHE).then((cache) => {
+        caches.open(CACHE_NAME).then((cache) => {
           cache.put(event.request, clone);
         });
+
         return response;
       })
       .catch(() => caches.match(event.request))
